@@ -12,7 +12,7 @@
         <div class="position-absolute top-0 start-50 translate-middle-x">
 
             <h1>My Newton-Raphson Viewer</h1>
-            <canvas id="myid" width="500" height="500"
+            <canvas id="myid" width="700" height="700"
                 style="border:1px solid #000000; margin:auto; display:block;"></canvas>
 
             <br>
@@ -27,15 +27,14 @@
                     
                 <div class="input-group mb-3">
                     <span class="input-group-text">Initial Guess</span>
-                    <input type="text" class="form-control" id="initial_guess" oninput="update_viewer()" value="10">
+                    <input type="text" class="form-control" id="initial_guess" oninput="update_viewer()" value="5">
                 </div>
                 <div class="alert alert-danger" role="alert" id="bad_initial_guess" style="display: none;"></div>
             </div>
 
             <div class="row">
-                <div class="col-md-auto">Iterations: 1</div>
-                <input type="range" class="custom-range col-md-auto" min="0" max="10" id="iterations" oninput="update_viewer()">
-                <div class="col-md-auto">10</div>
+                <div class="col-md-auto">Iterations: <span id="iterations_number">2</span></div>
+                <input type="range" class="custom-range col-lg-8" min="0" max="10" id="iterations" oninput="update_viewer()">
             </div>
 
             <p>Value: <span id="return_value">2</span></p>
