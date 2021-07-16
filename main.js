@@ -5,7 +5,6 @@ function squareroot(input_number, initial_guess, limit) {
     }
     return r;
 }
-console.log(squareroot(100, 3, 800));
 // A class to house our diagram drawing logic
 var Diagram = /** @class */ (function () {
     // Code to run when we initialize the Diagram
@@ -47,16 +46,31 @@ var Diagram = /** @class */ (function () {
 }());
 var main_diagram = new Diagram(10);
 function update_viewer() {
+    // Set root number
     var rootnumber = document.getElementById("rootnumber");
-    var iterations = document.getElementById("iterations");
     if (isNaN(Number(rootnumber.value))) {
-        document.getElementById("badrootnumber").style.display = "block";
-        document.getElementById("badrootnumber").innerText = rootnumber.value + " is not a valid number!";
+        document.getElementById("bad_root_number").style.display = "block";
+        document.getElementById("bad_root_number").innerText = rootnumber.value + " is not a valid number!";
     }
     else {
-        document.getElementById("badrootnumber").style.display = "none";
+        document.getElementById("bad_root_number").style.display = "none";
         main_diagram.number_root = Number(rootnumber.value);
-        main_diagram.update();
     }
+    // Set initial guess
+    var initial_guess = document.getElementById("initial_guess");
+    if (isNaN(Number(initial_guess.value))) {
+        document.getElementById("bad_initial_guess").style.display = "block";
+        document.getElementById("bad_initial_guess").innerText = initial_guess.value + " is not a valid number!";
+    }
+    else {
+        document.getElementById("bad_initial_guess").style.display = "none";
+        main_diagram.initial_guess = Number(initial_guess.value);
+    }
+    // Set iterations
+    var iterations = document.getElementById("iterations");
+    main_diagram.iterations = Number(iterations.value);
+    // Do + generate
+    document.getElementById("return_value").innerText = String(squareroot(main_diagram.number_root, main_diagram.initial_guess, main_diagram.iterations));
+    main_diagram.update();
 }
 //# sourceMappingURL=main.js.map

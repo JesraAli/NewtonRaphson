@@ -6,8 +6,6 @@ function squareroot(input_number : number, initial_guess : number, limit : numbe
     return r;
 }
 
-console.log(squareroot(100, 3, 800));
-
 // A class to house our diagram drawing logic
 class Diagram {
 
@@ -15,6 +13,8 @@ class Diagram {
     private drawing_context : CanvasRenderingContext2D; // The context (line width, color etc.)
 
     public number_root : number;
+    public iterations :number;
+    public initial_guess :number;
 
     // Code to run when we initialize the Diagram
     constructor(number_root : number) {
@@ -64,16 +64,32 @@ let main_diagram = new Diagram(10);
 
 function update_viewer() : void {
 
+    // Set root number
     let rootnumber : HTMLInputElement = document.getElementById("rootnumber") as HTMLInputElement;
-    let iterations : HTMLInputElement = document.getElementById("iterations") as HTMLInputElement;
-    
     if(isNaN(Number(rootnumber.value))) {
-        document.getElementById("badrootnumber").style.display = "block";
-        document.getElementById("badrootnumber").innerText = `${rootnumber.value} is not a valid number!`;
+        document.getElementById("bad_root_number").style.display = "block";
+        document.getElementById("bad_root_number").innerText = `${rootnumber.value} is not a valid number!`;
     } else {
-        document.getElementById("badrootnumber").style.display = "none";
+        document.getElementById("bad_root_number").style.display = "none";
         main_diagram.number_root = Number(rootnumber.value);
-        main_diagram.update();
     }
-    
+
+    // Set initial guess
+    let initial_guess : HTMLInputElement = document.getElementById("initial_guess") as HTMLInputElement;
+    if(isNaN(Number(initial_guess.value))) {
+        document.getElementById("bad_initial_guess").style.display = "block";
+        document.getElementById("bad_initial_guess").innerText = `${initial_guess.value} is not a valid number!`;
+    } else {
+        document.getElementById("bad_initial_guess").style.display = "none";
+        main_diagram.initial_guess = Number(initial_guess.value);
+    }
+
+    // Set iterations
+    let iterations : HTMLInputElement = document.getElementById("iterations") as HTMLInputElement;
+    main_diagram.iterations = Number(iterations.value);
+
+
+    // Do + generate
+    document.getElementById("return_value").innerText =String(squareroot(main_diagram.number_root, main_diagram.initial_guess, main_diagram.iterations));
+    main_diagram.update();
 }

@@ -20,23 +20,26 @@
             <div>
 
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Number to find the root of</span>
-                    <input type="text" class="form-control" placeholder="Enter number here"
-                        aria-label="Username" aria-describedby="basic-addon1" id="rootnumber" oninput="update_viewer()">
+                    <span class="input-group-text">Number to find the root of</span>
+                    <input type="text" class="form-control" id="rootnumber" oninput="update_viewer()" value="10">
                 </div>
+                <div class="alert alert-danger" role="alert" id="bad_root_number" style="display: none;"></div>
                     
-                <div class="alert alert-danger" role="alert" id="badrootnumber" style="display: none;">
-                    The root number is wrong!
-                </div>  
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Initial Guess</span>
+                    <input type="text" class="form-control" id="initial_guess" oninput="update_viewer()" value="10">
+                </div>
+                <div class="alert alert-danger" role="alert" id="bad_initial_guess" style="display: none;"></div>
             </div>
 
             <div class="row">
                 <div class="col-md-auto">Iterations: 1</div>
-                <input type="range" class="custom-range col-md-auto" min="0" max="10" id="iterations" onchange="update_viewer()">
-                <div class="col-md-auto">1000</div>
+                <input type="range" class="custom-range col-md-auto" min="0" max="10" id="iterations" oninput="update_viewer()">
+                <div class="col-md-auto">10</div>
             </div>
 
-            <p>Value: <span id="thevalue">2</span></p>
+            <p>Value: <span id="return_value">2</span></p>
+        
         </div>
     </div>
     
