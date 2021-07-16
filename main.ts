@@ -107,6 +107,11 @@ class Diagram {
             this.drawing_context.lineTo(this.scaleX(x), this.MAX_Y / 2 + 5);
             this.drawing_context.stroke();
             this.drawing_context.closePath();
+
+            if(x !== 0) {
+                this.drawing_context.font = "11pt Arial"; 
+                this.drawing_context.strokeText(String(x), this.scaleX(x) - 4, this.MAX_Y / 2 + 20);
+            }
         }
 
         // Ticks on the y-axis
@@ -116,6 +121,11 @@ class Diagram {
             this.drawing_context.lineTo(this.MAX_Y / 2 - 5, this.scaleY(y));
             this.drawing_context.stroke();
             this.drawing_context.closePath();
+            
+            if(y !== 0 && y % 5 == 0) {
+                this.drawing_context.font = "11pt Arial"; 
+                this.drawing_context.strokeText(String(y).padStart(3, ' '), this.MAX_Y / 2 - 30, this.scaleY(y) + 5);
+            }
         }
     }
 
