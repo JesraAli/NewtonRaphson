@@ -1,11 +1,51 @@
 <html>
 
 <head>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
-    <canvas id="myid" width="500" height="500" style="border:1px solid #000000;"></canvas>
+
+    <div class="position-relative">
+        <div class="position-absolute top-0 start-50 translate-middle-x">
+
+            <h1>My Newton-Raphson Viewer</h1>
+            <canvas id="myid" width="500" height="500"
+                style="border:1px solid #000000; margin:auto; display:block;"></canvas>
+
+            <br>
+
+            <div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Number to find the root of</span>
+                    <input type="text" class="form-control" placeholder="Enter number here"
+                        aria-label="Username" aria-describedby="basic-addon1" id="rootnumber" oninput="update_viewer()">
+                </div>
+                    
+                <div class="alert alert-danger" role="alert" id="badrootnumber" style="display: none;">
+                    The root number is wrong!
+                </div>  
+            </div>
+
+            <div class="row">
+                <div class="col-md-auto">Iterations: 1</div>
+                <input type="range" class="custom-range col-md-auto" min="0" max="10" id="iterations" onchange="update_viewer()">
+                <div class="col-md-auto">1000</div>
+            </div>
+
+            <p>Value: <span id="thevalue">2</span></p>
+        </div>
+    </div>
+    
     <script src="main.js"></script>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
